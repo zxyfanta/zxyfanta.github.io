@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>python 爬虫（1） | kingkong light star</title>
+<meta name="description" content="知道得越多，就知道得越少">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://zxyfanta.github.io/favicon.ico?v=1682176542869">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://zxyfanta.github.io/styles/main.css">
+
+
+<script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://zxyfanta.github.io">kingkong light star</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>python 爬虫（1）</h1>
+            <p class="article-meta">
+              2022-08-09
+              
+                <a href="https://zxyfanta.github.io/tag/tK-pNXObA/" class="badge ">
+                  python
+                </a>
+              
+                <a href="https://zxyfanta.github.io/tag/-S4_mc96q/" class="badge ">
+                  技术类
+                </a>
+              
+            </p>
+            
+              <img src="https://zxyfanta.github.io/post-images/python-pa-chong-1.jpeg" alt="python 爬虫（1）">
+            
+            <div class="post-content" v-pre>
+              <h2 id="爬虫是大家对python的日常重要标签">爬虫是大家对Python的日常重要标签</h2>
+<p>一般情况下，谈及到爬虫。大家第一反应就是python。其实能够作为爬虫工具使用的语言有很多。受限于是否有足够多的生态（第三方库），大家普遍认为python是其中最为方便的一种。</p>
+<!-- more -->
+<h2 id="爬去任务">爬去任务</h2>
+<p>今天接到一个小任务，需要爬去高校专业设置页面的很多pdf文件。</p>
+<p>当然很舒服的一点是：这类型的网站往往是没有反扒措施的。因此可以``放心调试```。</p>
+<h3 id="话不多说">话不多说</h3>
+<pre><code>#!/usr/bin/env python
+# -*- coding:utf-8 -*-
+# @FileName  :mainSpyder.py
+# @Time      :2022/8/3 9:05 上午
+# @Author    :邹建
+import csv
+import time
+import os
+import requests
+from selenium import webdriver
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+import pickle
+from urllib import parse
+from lxml import etree
+
+
+class mainSpyder:
+    '''
+    爬取蜘蛛
+    '''
+    url_login_by_password = 'https://gdjy.moe.edu.cn/'
+    driver = webdriver.Chrome()
+    totle_page = 0
+    table_title = []
+    table_full = []
+    url_csv = 'info.csv'
+
+    def init_csv(self, csv_head):
+        with open(self.url_csv, 'w') as f:
+            cw = csv.writer(f)
+            cw.writerow(csv_head)
+
+    def save_data(self):
+        s = self.get_session()
+        file_query_url = 'https://gdjy.moe.edu.cn/Index/Declaration'
+        self.table_full.append(self.table_title)
+        self.init_csv(self.table_title)
+        # test
+        # self.totle_page = 2
+        for i in range(1, int(self.totle_page) + 1):
+            # for i in range(1):
+            data = {
+                'intPageNo': i
+            }
+            reps = s.post(file_query_url, data)
+            time.sleep(3)
+            # print(reps.text)
+            selector = etree.HTML(reps.text)
+            trs = selector.cssselect('table&gt;tbody&gt;tr')
+            for tr in trs:
+                temp = []
+                temp = [td.text.strip() for td in tr]
+                temp[4] = tr[4].cssselect('a')[0].xpath('./@href')[0]
+                self.table_full.append(temp)
+                # self.get_file(temp[4], temp[0] + temp[1] + temp[3] + '.pdf')
+                self.save_csv(temp)
+                # time.sleep(0.1)
+            # print(self.table_full)
+            print(len(self.table_full))
+
+    def save_csv(self, row):
+        with open(self.url_csv, 'a+') as f:
+            cw = csv.writer(f)
+            cw.writerow(row)
+
+    def get_file(self, url, file_name):
+        r = requests.get(url)
+        with open(file_name, 'wb') as f:
+            f.write(r.content)
+
+    def _save_session(self, session):
+        with open('session.txt', 'wb') as f:
+            pickle.dump(session, f)
+
+    def _load_session(self):
+        '''
+        加载session
+        :return:
+        '''
+        with open('session.txt', 'rb') as f:
+            s = pickle.load(f)
+        return s
+
+    def _get_cookies(self):
+        '''
+        利用selenium登陆网站，并提取cookies
+        :return:
+        '''
+        self.driver.get(self.url_login_by_password)
+        # 等待5秒，直到loginName（登陆名）元素可见为止。（表示页面加载基本完毕）
+        user_name = WebDriverWait(self.driver, 10, 0.2).until(
+            EC.presence_of_element_located((By.XPATH, '//*[@id=&quot;login_name2&quot;]')))
+        password = self.driver.find_element_by_xpath('//*[@id=&quot;password2&quot;]')
+        # 登陆
+        login_btn = self.driver.find_element_by_xpath('//*[@id=&quot;myTab_Content0&quot;]/input[4]')
+        # 输入信息
+        user_name.send_keys('username')
+        password.send_keys('password')
+        print(&quot;############等待输入验证码############&quot;)
+        time.sleep(5)
+        login_btn.click()
+
+        time.sleep(3)
+        cookies = self.driver.get_cookies()
+        # self.driver.quit()
+        switch_btn = self.driver.find_element_by_xpath('//*[@id=&quot;header&quot;]/div/ul[1]/li[1]/a')
+        switch_btn.click()
+        time.sleep(3)
+        self.driver.switch_to.window(self.driver.window_handles[-1])
+        self.totle_page = self.driver.find_element_by_xpath(
+            '/html/body/div[3]/div/form/table/tfoot/tr/td/div/nobr[2]/a[8]')
+        print('总页面', self.totle_page.text)
+        self.totle_page = self.totle_page.text
+        self.table_title = self.driver.find_elements_by_css_selector('table&gt;thead&gt;tr&gt;th')
+        self.table_title = [i.text for i in self.table_title]
+        print(self.table_title)
+        return cookies
+
+    def get_session(self):
+        '''
+        获取一个session
+        :return:
+        '''
+        s = requests.Session()
+        if not os.path.exists('session.txt'):
+            s.headers.clear()
+            for cookie in self._get_cookies():
+                s.cookies.set(cookie['name'], cookie['value'])
+            # self._save_session(s)
+        else:
+            s = self._load_session()
+        return s
+
+
+if __name__ == &quot;__main__&quot;:
+    ms = mainSpyder()
+    ms.save_data()
+</code></pre>
+<h3 id="代码描述">代码描述</h3>
+<p>整体代码分为4个部分：</p>
+<ul>
+<li>通过selenium正常登陆，获取session上下文（也可以通过其他方式获取header、cookies等信息）</li>
+<li>通过request.session 维持上下文，并发起请求。</li>
+<li>通过首页判断（总页数和数据分布）</li>
+<li>对页面发起请求，使用lxml提取数据，并通过a标签的href属性得到下载链接，并下载。</li>
+</ul>
+<h3 id="改进点">改进点</h3>
+<ul>
+<li>下载是在主线中进行的，效率略低（2010个文件）下载将近花费20分钟。可以考虑使用异步携程下载。</li>
+<li>lxml效率较低，可以考虑改为正则表达式。</li>
+<li>selenium忘记关闭。</li>
+</ul>
+
+            </div>
+          </article>
+        </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://zxyfanta.github.io/post/pyqt5-zai-qlabel-zhong-cha-ru-tu-pian/">
+                <h3 class="post-title">
+                  pyqt5 在QLabel中插入图片
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
+      </div>
+
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://zxyfanta.github.io/images/avatar.png?v=1682176542869" class="no-responsive avatar">
+    <div class="text-muted">知道得越多，就知道得越少</div>
+    <div class="social-container">
+      
+        
+          <a href="https://github.com/zxyfanta" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://zxyfanta.github.io/post/you-yi-jian-da-shi/">又一件大事</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://zxyfanta.github.io/post/vim-ti-huan-gong-neng/">Vim 替换功能</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://zxyfanta.github.io/post/vim-hong-lu-zhi/">Vim 宏录制</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://zxyfanta.github.io/post/python-pa-chong-2/">Python 爬虫（2）</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://zxyfanta.github.io/post/python-pa-chong-1/">python 爬虫（1）</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://zxyfanta.github.io/post/pyqt5-zai-qlabel-zhong-cha-ru-tu-pian/">pyqt5 在QLabel中插入图片</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://zxyfanta.github.io/post/mbp-10157-yu-lan-markdownmdwen-ti/">mbp 10.15.7 预览markdown（.md）问题</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://zxyfanta.github.io/post/python-zi-dong-hua-gong-ju-1/">python 自动化工具（1）</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://zxyfanta.github.io/post/shi-jian-shi-jin-gui-de/">时间是金贵的</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://zxyfanta.github.io/post/xin-de-kai-shi/">新的开始</a>
+            </li>
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://zxyfanta.github.io/tag/NMneraErb/" class="badge secondary">
+          生活
+        </a>
+      
+        <a href="https://zxyfanta.github.io/tag/3YLagzFRN/" class="badge ">
+          工作
+        </a>
+      
+        <a href="https://zxyfanta.github.io/tag/_U_uIiz8I/" class="badge warning">
+          vim
+        </a>
+      
+        <a href="https://zxyfanta.github.io/tag/-S4_mc96q/" class="badge warning">
+          技术类
+        </a>
+      
+        <a href="https://zxyfanta.github.io/tag/tK-pNXObA/" class="badge warning">
+          python
+        </a>
+      
+        <a href="https://zxyfanta.github.io/tag/UEqgfb4dE/" class="badge ">
+          pyqt5
+        </a>
+      
+        <a href="https://zxyfanta.github.io/tag/VF8rxo2Qt/" class="badge success">
+          mac
+        </a>
+      
+        <a href="https://zxyfanta.github.io/tag/KD5d-U2ks/" class="badge secondary">
+          Gridea
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://zxyfanta.github.io/atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+
+
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+</script>
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Vim 替换功能 | kingkong light star</title>
+<meta name="description" content="知道得越多，就知道得越少">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://zxyfanta.github.io/favicon.ico?v=1682176542869">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://zxyfanta.github.io/styles/main.css">
+
+
+<script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://zxyfanta.github.io">kingkong light star</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>Vim 替换功能</h1>
+            <p class="article-meta">
+              2022-09-11
+              
+                <a href="https://zxyfanta.github.io/tag/3YLagzFRN/" class="badge success">
+                  工作
+                </a>
+              
+                <a href="https://zxyfanta.github.io/tag/_U_uIiz8I/" class="badge secondary">
+                  vim
+                </a>
+              
+            </p>
+            
+            <div class="post-content" v-pre>
+              <p>在大量的代码和文本书写工作中，会遇到部分/整体文本（函数/方法名）等的替换行为。<br>
+如果期望以逐个修改的方式来处理是非常低效率的。即便你在使用Vim/Emacs这样高效的处理方式。</p>
+<!-- more -->
+<p>Vim的基本用法是<code>:[position]s/from/to/[flogs]</code></p>
+<p>其中：</p>
+<ul>
+<li>
+<p>[position]表示位置，其中有几种模式，并不准备完全罗列。仅列出常用的几种。</p>
+<ul>
+<li>什么都不写或者<code>'</code>（表示当前行）</li>
+<li>数字 （表示第几行）（很少用，一般看清楚行号的时候，就已经影响到速度了）</li>
+<li>n,m  （表示一个范围）（少用，个人通常使用范围选定来替换，原因同上，看清楚了就慢了）</li>
+<li>% 全局替换（如果页面较长，需要注意潜在的风险）（比如错误的匹配）<br>
+个人采用：V+上下，选定范围后 <code>:</code>   此时显示   <code>:&lt;:&gt;</code>即表示当前选定的范围。<br>
+V模式加上下迅速选定位置（常用，能够明确的选定范围，感觉要快一点，不过如果范围较大，依然耽误时间）</li>
+</ul>
+</li>
+<li>
+<p>flogs 标志位，常用的如下：</p>
+<ul>
+<li>什么都不写    替换匹配到的第一个</li>
+<li>c #confirm，表示替换前询问，大范围替换的时候可以开启。</li>
+<li>g #globe ，全局，就是在范围内全部都替换，不管命中多少次</li>
+<li>i #ignore，忽略，不区分大小写（默认位大写<code>I</code>,大小写敏感）</li>
+<li>&amp; 重复上次的参数（没用过）</li>
+<li>n 不做任何修改，仅提示会影响多少行。</li>
+</ul>
+</li>
+</ul>
+<p>常用flog组合：</p>
+<ul>
+<li>gc 范围内全替换，但都做询问；</li>
+<li>gi 全局替换，不区分大小写</li>
+</ul>
+<hr>
+<p>偶尔使用的特殊用法：</p>
+<ul>
+<li>转义字符     <code>\.</code> 表示<code>.</code></li>
+<li>给字符加上括号   <code>:s/\{hi\}/{\1}/g</code></li>
+</ul>
+
+            </div>
+          </article>
+        </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://zxyfanta.github.io/post/vim-hong-lu-zhi/">
+                <h3 class="post-title">
+                  Vim 宏录制
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
+      </div>
+
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://zxyfanta.github.io/images/avatar.png?v=1682176542869" class="no-responsive avatar">
+    <div class="text-muted">知道得越多，就知道得越少</div>
+    <div class="social-container">
+      
+        
+          <a href="https://github.com/zxyfanta" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://zxyfanta.github.io/post/you-yi-jian-da-shi/">又一件大事</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://zxyfanta.github.io/post/vim-ti-huan-gong-neng/">Vim 替换功能</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://zxyfanta.github.io/post/vim-hong-lu-zhi/">Vim 宏录制</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://zxyfanta.github.io/post/python-pa-chong-2/">Python 爬虫（2）</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://zxyfanta.github.io/post/python-pa-chong-1/">python 爬虫（1）</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://zxyfanta.github.io/post/pyqt5-zai-qlabel-zhong-cha-ru-tu-pian/">pyqt5 在QLabel中插入图片</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://zxyfanta.github.io/post/mbp-10157-yu-lan-markdownmdwen-ti/">mbp 10.15.7 预览markdown（.md）问题</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://zxyfanta.github.io/post/python-zi-dong-hua-gong-ju-1/">python 自动化工具（1）</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://zxyfanta.github.io/post/shi-jian-shi-jin-gui-de/">时间是金贵的</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://zxyfanta.github.io/post/xin-de-kai-shi/">新的开始</a>
+            </li>
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://zxyfanta.github.io/tag/NMneraErb/" class="badge secondary">
+          生活
+        </a>
+      
+        <a href="https://zxyfanta.github.io/tag/3YLagzFRN/" class="badge ">
+          工作
+        </a>
+      
+        <a href="https://zxyfanta.github.io/tag/_U_uIiz8I/" class="badge secondary">
+          vim
+        </a>
+      
+        <a href="https://zxyfanta.github.io/tag/-S4_mc96q/" class="badge ">
+          技术类
+        </a>
+      
+        <a href="https://zxyfanta.github.io/tag/tK-pNXObA/" class="badge secondary">
+          python
+        </a>
+      
+        <a href="https://zxyfanta.github.io/tag/UEqgfb4dE/" class="badge secondary">
+          pyqt5
+        </a>
+      
+        <a href="https://zxyfanta.github.io/tag/VF8rxo2Qt/" class="badge success">
+          mac
+        </a>
+      
+        <a href="https://zxyfanta.github.io/tag/KD5d-U2ks/" class="badge ">
+          Gridea
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://zxyfanta.github.io/atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+
+
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+</script>
+
+
+
+
+  </body>
+</html>

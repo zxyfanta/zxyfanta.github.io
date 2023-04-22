@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>mbp 10.15.7 预览markdown（.md）问题 | kingkong light star</title>
+<meta name="description" content="知道得越多，就知道得越少">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://zxyfanta.github.io/favicon.ico?v=1682176542869">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://zxyfanta.github.io/styles/main.css">
+
+
+<script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://zxyfanta.github.io">kingkong light star</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>mbp 10.15.7 预览markdown（.md）问题</h1>
+            <p class="article-meta">
+              2022-07-31
+              
+                <a href="https://zxyfanta.github.io/tag/VF8rxo2Qt/" class="badge warning">
+                  mac
+                </a>
+              
+                <a href="https://zxyfanta.github.io/tag/-S4_mc96q/" class="badge warning">
+                  技术类
+                </a>
+              
+            </p>
+            
+            <div class="post-content" v-pre>
+              <h2 id="markkdown">markkdown</h2>
+<p>日常工作重点用到markdown的情况是越来越多，电脑里面也有多款markdown编辑器。<br>
+比如常见的Obsidian，zettlr，Mweb等（不包含因为各种情况卸载的编辑器）。<br>
+比较舒服的是Mweb（个人吐槽不支持vim），不过作为主要用于博客更新的工具来说，也没什么必要。<br>
+Obsidian用的时间比较长了，虽然插件众多，但是目前主要用于与zotero进行的笔记联动。</p>
+<!-- more -->
+<h2 id="mac-quicklook">mac quicklook</h2>
+<p>quicklook作为一个mac的超现实主义工具，是工作中用于预览文件的工具。通过它可以避免打开文件的过程。（尤其是在需要检阅大量文件的时候：检查毕业论文稿件）。<br>
+通常来说，mac自带的文件预览包含了一些常用文件的预览。mac作为程序员的···生产力工具···，也应该支持更多的代码文件（js，css，html，java，py，ipynb，c，cpp）等格式的支持，当然也还有各类配置文件格式和今天的主题md/markdown等后缀。</p>
+<h2 id="工具">工具</h2>
+<ul>
+<li>QLMarkdown<br>
+常用的工具包括quicklook的插件式扩展，QLMarkdown插件：</li>
+</ul>
+<pre><code>brew install QLMarkdown
+</code></pre>
+<p>当然这个插件的下载速度比较慢。因为数据来源github。你懂的。</p>
+<ul>
+<li>glance插件</li>
+</ul>
+<p><img src="https://zxyfanta.github.io/post-images/1660005430436.png" alt="" loading="lazy"><br>
+这个插件目前已经不更新了。最近一次更新是在2020年。不过目前可以正常使用。<br>
+下载地址在github中可以找到。</p>
+<pre><code>https://github.com/samuelmeuli/glance
+</code></pre>
+<p>安装后，可以开启各种格式的支持，比较适合程序员使用。</p>
+<ul>
+<li>IQuickLook</li>
+</ul>
+<p>这个插件简单的尝试过，在github中是中文说明。不过也是在2020附近停止了更新。<br>
+这个插件打开markdown后是有渲染的。因此效果不错。<br>
+地址，可自行github搜索。</p>
+<h2 id="出现的问题">出现的问题</h2>
+<p>本机系统是10.15.7，没有进行大版本更新，主要需要稳定的环境。<br>
+在安装一系列插件之前，有安装坚果云。<br>
+很长一段时间，其他的格式都可以正常预览，但是markdown却不能预览。<br>
+准确的说，是“md”格式没有响应，“mardown”后缀是可以的。<br>
+因此基于强迫症，进行了旷日持久的折腾。<br>
+无意间在搜索中确实见过坚果云影响md的预览，只是当时觉得是无稽之谈，没有理会。<br>
+今天在准备重装系统解决问题之前，决定尝试一下。<br>
+确实马上就解决了。<br>
+重装<code>坚果云</code>是最终的解决方案。</p>
+
+            </div>
+          </article>
+        </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://zxyfanta.github.io/post/python-zi-dong-hua-gong-ju-1/">
+                <h3 class="post-title">
+                  python 自动化工具（1）
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
+      </div>
+
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://zxyfanta.github.io/images/avatar.png?v=1682176542869" class="no-responsive avatar">
+    <div class="text-muted">知道得越多，就知道得越少</div>
+    <div class="social-container">
+      
+        
+          <a href="https://github.com/zxyfanta" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://zxyfanta.github.io/post/you-yi-jian-da-shi/">又一件大事</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://zxyfanta.github.io/post/vim-ti-huan-gong-neng/">Vim 替换功能</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://zxyfanta.github.io/post/vim-hong-lu-zhi/">Vim 宏录制</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://zxyfanta.github.io/post/python-pa-chong-2/">Python 爬虫（2）</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://zxyfanta.github.io/post/python-pa-chong-1/">python 爬虫（1）</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://zxyfanta.github.io/post/pyqt5-zai-qlabel-zhong-cha-ru-tu-pian/">pyqt5 在QLabel中插入图片</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://zxyfanta.github.io/post/mbp-10157-yu-lan-markdownmdwen-ti/">mbp 10.15.7 预览markdown（.md）问题</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://zxyfanta.github.io/post/python-zi-dong-hua-gong-ju-1/">python 自动化工具（1）</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://zxyfanta.github.io/post/shi-jian-shi-jin-gui-de/">时间是金贵的</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://zxyfanta.github.io/post/xin-de-kai-shi/">新的开始</a>
+            </li>
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://zxyfanta.github.io/tag/NMneraErb/" class="badge secondary">
+          生活
+        </a>
+      
+        <a href="https://zxyfanta.github.io/tag/3YLagzFRN/" class="badge ">
+          工作
+        </a>
+      
+        <a href="https://zxyfanta.github.io/tag/_U_uIiz8I/" class="badge ">
+          vim
+        </a>
+      
+        <a href="https://zxyfanta.github.io/tag/-S4_mc96q/" class="badge warning">
+          技术类
+        </a>
+      
+        <a href="https://zxyfanta.github.io/tag/tK-pNXObA/" class="badge secondary">
+          python
+        </a>
+      
+        <a href="https://zxyfanta.github.io/tag/UEqgfb4dE/" class="badge success">
+          pyqt5
+        </a>
+      
+        <a href="https://zxyfanta.github.io/tag/VF8rxo2Qt/" class="badge secondary">
+          mac
+        </a>
+      
+        <a href="https://zxyfanta.github.io/tag/KD5d-U2ks/" class="badge secondary">
+          Gridea
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://zxyfanta.github.io/atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+
+
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+</script>
+
+
+
+
+  </body>
+</html>

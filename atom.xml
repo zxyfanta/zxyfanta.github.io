@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://zxyfanta.github.io</id>
+    <title>kingkong light star</title>
+    <updated>2023-04-22T15:15:46.621Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://zxyfanta.github.io"/>
+    <link rel="self" href="https://zxyfanta.github.io/atom.xml"/>
+    <subtitle>知道得越多，就知道得越少</subtitle>
+    <logo>https://zxyfanta.github.io/images/avatar.png</logo>
+    <icon>https://zxyfanta.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2023, kingkong light star</rights>
+    <entry>
+        <title type="html"><![CDATA[又一件大事]]></title>
+        <id>https://zxyfanta.github.io/post/you-yi-jian-da-shi/</id>
+        <link href="https://zxyfanta.github.io/post/you-yi-jian-da-shi/">
+        </link>
+        <updated>2023-03-13T11:07:58.000Z</updated>
+        <summary type="html"><![CDATA[<p>人生在世，事情一件一件的办。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>人生在世，事情一件一件的办。</p>
+<!-- more -->
+<h2 id="定居">定居</h2>
+<p>这次是真的在乐山定居了，经过反复的思量，最终，还是决定留下了，留在乐山。<br>
+随着二宝的出生，在乐山的生活越发的平静了。每天上班下班，接送，照顾，日子的速度渐渐的慢下来了。来乐山已经近六年了。但是周边的风景名胜也没有时间去溜达一下。</p>
+<h2 id="购房">购房</h2>
+<p>今天是2023年3月22日，上午在房管局办理完了过户手续。全程委托中介，说实话并无特别的感觉。<br>
+大事一件一件的办，后续就要专心自己的处理自己手头的事情了。<br>
+家庭的担子是不敢松的。要努力扛起全家的重任。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Vim 替换功能]]></title>
+        <id>https://zxyfanta.github.io/post/vim-ti-huan-gong-neng/</id>
+        <link href="https://zxyfanta.github.io/post/vim-ti-huan-gong-neng/">
+        </link>
+        <updated>2022-09-11T13:11:41.000Z</updated>
+        <summary type="html"><![CDATA[<p>在大量的代码和文本书写工作中，会遇到部分/整体文本（函数/方法名）等的替换行为。<br>
+如果期望以逐个修改的方式来处理是非常低效率的。即便你在使用Vim/Emacs这样高效的处理方式。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>在大量的代码和文本书写工作中，会遇到部分/整体文本（函数/方法名）等的替换行为。<br>
+如果期望以逐个修改的方式来处理是非常低效率的。即便你在使用Vim/Emacs这样高效的处理方式。</p>
+<!-- more -->
+<p>Vim的基本用法是<code>:[position]s/from/to/[flogs]</code></p>
+<p>其中：</p>
+<ul>
+<li>
+<p>[position]表示位置，其中有几种模式，并不准备完全罗列。仅列出常用的几种。</p>
+<ul>
+<li>什么都不写或者<code>'</code>（表示当前行）</li>
+<li>数字 （表示第几行）（很少用，一般看清楚行号的时候，就已经影响到速度了）</li>
+<li>n,m  （表示一个范围）（少用，个人通常使用范围选定来替换，原因同上，看清楚了就慢了）</li>
+<li>% 全局替换（如果页面较长，需要注意潜在的风险）（比如错误的匹配）<br>
+个人采用：V+上下，选定范围后 <code>:</code>   此时显示   <code>:&lt;:&gt;</code>即表示当前选定的范围。<br>
+V模式加上下迅速选定位置（常用，能够明确的选定范围，感觉要快一点，不过如果范围较大，依然耽误时间）</li>
+</ul>
+</li>
+<li>
+<p>flogs 标志位，常用的如下：</p>
+<ul>
+<li>什么都不写    替换匹配到的第一个</li>
+<li>c #confirm，表示替换前询问，大范围替换的时候可以开启。</li>
+<li>g #globe ，全局，就是在范围内全部都替换，不管命中多少次</li>
+<li>i #ignore，忽略，不区分大小写（默认位大写<code>I</code>,大小写敏感）</li>
+<li>&amp; 重复上次的参数（没用过）</li>
+<li>n 不做任何修改，仅提示会影响多少行。</li>
+</ul>
+</li>
+</ul>
+<p>常用flog组合：</p>
+<ul>
+<li>gc 范围内全替换，但都做询问；</li>
+<li>gi 全局替换，不区分大小写</li>
+</ul>
+<hr>
+<p>偶尔使用的特殊用法：</p>
+<ul>
+<li>转义字符     <code>\.</code> 表示<code>.</code></li>
+<li>给字符加上括号   <code>:s/\{hi\}/{\1}/g</code></li>
+</ul>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Vim 宏录制]]></title>
+        <id>https://zxyfanta.github.io/post/vim-hong-lu-zhi/</id>
+        <link href="https://zxyfanta.github.io/post/vim-hong-lu-zhi/">
+        </link>
+        <updated>2022-08-17T02:51:49.000Z</updated>
+        <summary type="html"><![CDATA[<h2 id="原由">原由</h2>
+<p>今天从excel里面复制了超300行数据，到pycharm作为list，因此需要给拷贝的数据添加 <code> &quot; &quot;,</code>。</p>
+<p>城南晶座门市<br>
+龙潭湾<br>
+龙凤家园<br>
+宏泰广场</p>
+<p>基本没有手动处理的办法。<br>
+因此寻求一种重复执行的方法。</p>
+]]></summary>
+        <content type="html"><![CDATA[<h2 id="原由">原由</h2>
+<p>今天从excel里面复制了超300行数据，到pycharm作为list，因此需要给拷贝的数据添加 <code> &quot; &quot;,</code>。</p>
+<p>城南晶座门市<br>
+龙潭湾<br>
+龙凤家园<br>
+宏泰广场</p>
+<p>基本没有手动处理的办法。<br>
+因此寻求一种重复执行的方法。</p>
+<!-- more -->
+<h2 id="vim-宏">Vim 宏</h2>
+<p>宏是一种可以录制用户手动操作的功能。可以应对用户个性化的需求。</p>
+<h2 id="开工">开工</h2>
+<p>在normal模式下，按q加一个字母开始录制。例如按下qr，将该宏注册为r。</p>
+<p>按下I在行首插入，在编辑模式按下Tab键。按Esc键返回到normal模式。</p>
+<p>按下j将光标移动到下一行。</p>
+<p>按下q完成录制。</p>
+<p>即宏的录制是以q加一个注册字母开始，录制操作过程，并在normal模式以q完成录制。</p>
+<p>使用宏</p>
+<p>使用上面录制的宏r</p>
+<p>normal模式下将光标移动到第二行，按下@r，使用了一次宏r。</p>
+<p>多次操作按下数字加@r，例如将光标移动到第三行，对余下的5行操作宏r，按下5@r</p>
+<p>@@是对上一次宏使用的重复使用。</p>
+<h2 id="注意">注意</h2>
+<p>由于本次的需求有换行的动作，可以将动作放到操作的第一步，或最后一步。</p>
+<h2 id="录制">录制</h2>
+<p>qri“EscA”,kIq<br>
+qr 录制名为r的宏<br>
+i 插入<br>
+“<br>
+Esc 退出编辑模式<br>
+A 行尾<br>
+”，<br>
+k下一行<br>
+I 行首<br>
+q 结束录制<br>
+@r 重复执行<br>
+5@r重复五次执行</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Python 爬虫（2）]]></title>
+        <id>https://zxyfanta.github.io/post/python-pa-chong-2/</id>
+        <link href="https://zxyfanta.github.io/post/python-pa-chong-2/">
+        </link>
+        <updated>2022-08-10T12:50:01.000Z</updated>
+        <summary type="html"><![CDATA[<h2 id="爬虫的思路">爬虫的思路</h2>
+<p>通过最近的爬虫学习主要归纳了三种爬取思路：</p>
+<ul>
+<li>第一种：完全使用selenium进行模拟；</li>
+<li>第二种：使用request库进行接口访问；</li>
+<li>第三种：混合上述两者；</li>
+</ul>
+]]></summary>
+        <content type="html"><![CDATA[<h2 id="爬虫的思路">爬虫的思路</h2>
+<p>通过最近的爬虫学习主要归纳了三种爬取思路：</p>
+<ul>
+<li>第一种：完全使用selenium进行模拟；</li>
+<li>第二种：使用request库进行接口访问；</li>
+<li>第三种：混合上述两者；</li>
+</ul>
+<!-- more -->
+<h2 id="模拟与接口">模拟与接口</h2>
+<h3 id="差异">差异</h3>
+<p>通常情况下，使用驱动控制浏览器进行自动化爬去（模拟）的方式有一个非常大的优点<code>完全类同于人工访问</code>。总的来说，人工访问与程序自动化访问有很大的区别，做个不知道是否恰当的比喻：一个类似与word，一个类似于latex；一个是所见即所得，一个是完全程序控制。</p>
+<p>之所以称类同于人工访问是优点，在于程序所有的流程完全可见。和电脑屏幕前坐了一个虚拟人在一步一步按照您的意图进行访问是一样的。这样的形式往往是便于理解的。</p>
+<h3 id="模拟">模拟</h3>
+<p>初学时容易出现问题的地方有：<br>
+<code>页面访问的时间把控；</code></p>
+<h4 id="为何要让程序停下来">为何要让程序停下来？</h4>
+<p>需要让程序停下来的情况比较多：</p>
+<ul>
+<li>需要等待页面加载</li>
+<li>需要避开反爬策略</li>
+<li>周期性启动的爬虫</li>
+<li>...</li>
+</ul>
+<p>sleep是大家最容想到的让程序停止下来的方式了。</p>
+<pre><code>sleep(time)
+</code></pre>
+<p>通过传递时间参数，让主线程沉睡（time）毫秒。</p>
+<p>当然如果不论任何情况下，都生硬的让程序停下来，有时候会损伤效率。</p>
+<pre><code>implicity_wait(time)
+</code></pre>
+<p>隐性等待是浏览器在time时间内加载完成则继续执行。隐性等待对整个driver都有作用，只需要设置一次</p>
+<p>。相当于给当前浏览器设置了一个最大等待时间，每次请求时进行等待，如果超出等待时间，即抛出异常。</p>
+<pre><code>WebDriverWait(driver, timeout, poll_frequency=0.5, ignored_exceptions=None)
+</code></pre>
+<p>driver：WebDriver 的驱动程序(Ie, Firefox, Chrome 或远程)；</p>
+<p>timeout：最长超时时间，默认以秒为单位；</p>
+<p>poll_frequency：休眠时间的间隔（步长）时间，默认为 0.5 秒；</p>
+<p>ignored_exceptions：超时后的异常信息，默认情况下抛 NoSuchElementException 异常；</p>
+<p>当然配合until和until_not使用</p>
+<pre><code class="language-python">from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+driver = webdriver.Chrome()
+
+driver.get(&quot;xxxxxx&quot;)
+
+try:
+
+     WebDriverWait(driver, 20).until(lambda x : driver.find_element_by_xpath(&quot;xxxx&quot;) )
+
+finally:
+
+    driver.close()
+</code></pre>
+<!-- more -->
+<p>关于定位和操作下次继续</p>
+<ul>
+<li>页面元素的定位；</li>
+<li>页面元素的操作；</li>
+</ul>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[python 爬虫（1）]]></title>
+        <id>https://zxyfanta.github.io/post/python-pa-chong-1/</id>
+        <link href="https://zxyfanta.github.io/post/python-pa-chong-1/">
+        </link>
+        <updated>2022-08-09T01:49:45.000Z</updated>
+        <summary type="html"><![CDATA[<h2 id="爬虫是大家对python的日常重要标签">爬虫是大家对Python的日常重要标签</h2>
+<p>一般情况下，谈及到爬虫。大家第一反应就是python。其实能够作为爬虫工具使用的语言有很多。受限于是否有足够多的生态（第三方库），大家普遍认为python是其中最为方便的一种。</p>
+]]></summary>
+        <content type="html"><![CDATA[<h2 id="爬虫是大家对python的日常重要标签">爬虫是大家对Python的日常重要标签</h2>
+<p>一般情况下，谈及到爬虫。大家第一反应就是python。其实能够作为爬虫工具使用的语言有很多。受限于是否有足够多的生态（第三方库），大家普遍认为python是其中最为方便的一种。</p>
+<!-- more -->
+<h2 id="爬去任务">爬去任务</h2>
+<p>今天接到一个小任务，需要爬去高校专业设置页面的很多pdf文件。</p>
+<p>当然很舒服的一点是：这类型的网站往往是没有反扒措施的。因此可以``放心调试```。</p>
+<h3 id="话不多说">话不多说</h3>
+<pre><code>#!/usr/bin/env python
+# -*- coding:utf-8 -*-
+# @FileName  :mainSpyder.py
+# @Time      :2022/8/3 9:05 上午
+# @Author    :邹建
+import csv
+import time
+import os
+import requests
+from selenium import webdriver
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+import pickle
+from urllib import parse
+from lxml import etree
+
+
+class mainSpyder:
+    '''
+    爬取蜘蛛
+    '''
+    url_login_by_password = 'https://gdjy.moe.edu.cn/'
+    driver = webdriver.Chrome()
+    totle_page = 0
+    table_title = []
+    table_full = []
+    url_csv = 'info.csv'
+
+    def init_csv(self, csv_head):
+        with open(self.url_csv, 'w') as f:
+            cw = csv.writer(f)
+            cw.writerow(csv_head)
+
+    def save_data(self):
+        s = self.get_session()
+        file_query_url = 'https://gdjy.moe.edu.cn/Index/Declaration'
+        self.table_full.append(self.table_title)
+        self.init_csv(self.table_title)
+        # test
+        # self.totle_page = 2
+        for i in range(1, int(self.totle_page) + 1):
+            # for i in range(1):
+            data = {
+                'intPageNo': i
+            }
+            reps = s.post(file_query_url, data)
+            time.sleep(3)
+            # print(reps.text)
+            selector = etree.HTML(reps.text)
+            trs = selector.cssselect('table&gt;tbody&gt;tr')
+            for tr in trs:
+                temp = []
+                temp = [td.text.strip() for td in tr]
+                temp[4] = tr[4].cssselect('a')[0].xpath('./@href')[0]
+                self.table_full.append(temp)
+                # self.get_file(temp[4], temp[0] + temp[1] + temp[3] + '.pdf')
+                self.save_csv(temp)
+                # time.sleep(0.1)
+            # print(self.table_full)
+            print(len(self.table_full))
+
+    def save_csv(self, row):
+        with open(self.url_csv, 'a+') as f:
+            cw = csv.writer(f)
+            cw.writerow(row)
+
+    def get_file(self, url, file_name):
+        r = requests.get(url)
+        with open(file_name, 'wb') as f:
+            f.write(r.content)
+
+    def _save_session(self, session):
+        with open('session.txt', 'wb') as f:
+            pickle.dump(session, f)
+
+    def _load_session(self):
+        '''
+        加载session
+        :return:
+        '''
+        with open('session.txt', 'rb') as f:
+            s = pickle.load(f)
+        return s
+
+    def _get_cookies(self):
+        '''
+        利用selenium登陆网站，并提取cookies
+        :return:
+        '''
+        self.driver.get(self.url_login_by_password)
+        # 等待5秒，直到loginName（登陆名）元素可见为止。（表示页面加载基本完毕）
+        user_name = WebDriverWait(self.driver, 10, 0.2).until(
+            EC.presence_of_element_located((By.XPATH, '//*[@id=&quot;login_name2&quot;]')))
+        password = self.driver.find_element_by_xpath('//*[@id=&quot;password2&quot;]')
+        # 登陆
+        login_btn = self.driver.find_element_by_xpath('//*[@id=&quot;myTab_Content0&quot;]/input[4]')
+        # 输入信息
+        user_name.send_keys('username')
+        password.send_keys('password')
+        print(&quot;############等待输入验证码############&quot;)
+        time.sleep(5)
+        login_btn.click()
+
+        time.sleep(3)
+        cookies = self.driver.get_cookies()
+        # self.driver.quit()
+        switch_btn = self.driver.find_element_by_xpath('//*[@id=&quot;header&quot;]/div/ul[1]/li[1]/a')
+        switch_btn.click()
+        time.sleep(3)
+        self.driver.switch_to.window(self.driver.window_handles[-1])
+        self.totle_page = self.driver.find_element_by_xpath(
+            '/html/body/div[3]/div/form/table/tfoot/tr/td/div/nobr[2]/a[8]')
+        print('总页面', self.totle_page.text)
+        self.totle_page = self.totle_page.text
+        self.table_title = self.driver.find_elements_by_css_selector('table&gt;thead&gt;tr&gt;th')
+        self.table_title = [i.text for i in self.table_title]
+        print(self.table_title)
+        return cookies
+
+    def get_session(self):
+        '''
+        获取一个session
+        :return:
+        '''
+        s = requests.Session()
+        if not os.path.exists('session.txt'):
+            s.headers.clear()
+            for cookie in self._get_cookies():
+                s.cookies.set(cookie['name'], cookie['value'])
+            # self._save_session(s)
+        else:
+            s = self._load_session()
+        return s
+
+
+if __name__ == &quot;__main__&quot;:
+    ms = mainSpyder()
+    ms.save_data()
+</code></pre>
+<h3 id="代码描述">代码描述</h3>
+<p>整体代码分为4个部分：</p>
+<ul>
+<li>通过selenium正常登陆，获取session上下文（也可以通过其他方式获取header、cookies等信息）</li>
+<li>通过request.session 维持上下文，并发起请求。</li>
+<li>通过首页判断（总页数和数据分布）</li>
+<li>对页面发起请求，使用lxml提取数据，并通过a标签的href属性得到下载链接，并下载。</li>
+</ul>
+<h3 id="改进点">改进点</h3>
+<ul>
+<li>下载是在主线中进行的，效率略低（2010个文件）下载将近花费20分钟。可以考虑使用异步携程下载。</li>
+<li>lxml效率较低，可以考虑改为正则表达式。</li>
+<li>selenium忘记关闭。</li>
+</ul>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[pyqt5 在QLabel中插入图片]]></title>
+        <id>https://zxyfanta.github.io/post/pyqt5-zai-qlabel-zhong-cha-ru-tu-pian/</id>
+        <link href="https://zxyfanta.github.io/post/pyqt5-zai-qlabel-zhong-cha-ru-tu-pian/">
+        </link>
+        <updated>2022-08-01T00:37:59.000Z</updated>
+        <summary type="html"><![CDATA[<h2 id="qlabel中插入图片">QLabel中插入图片</h2>
+<p>在其他的gui框架中，类似与label的组件在大多数情况下都仅仅是进行静态文字的展示。<br>
+前段时间在进行web前端授课，从html到html5到jQuery再到Vue，已经习惯了大多数可见组件都可以进行事件响应的情况。</p>
+]]></summary>
+        <content type="html"><![CDATA[<h2 id="qlabel中插入图片">QLabel中插入图片</h2>
+<p>在其他的gui框架中，类似与label的组件在大多数情况下都仅仅是进行静态文字的展示。<br>
+前段时间在进行web前端授课，从html到html5到jQuery再到Vue，已经习惯了大多数可见组件都可以进行事件响应的情况。</p>
+<!-- more -->
+<p>一开始的时候，我在Qcreater里面找了半天，想找到一个专门进行图片展示的组件。<br>
+在bing.com搜索一番之后，在csdn中却看到满大街的李勇QLabel显示pix的方法。</p>
+<pre><code>pix = QPixmap('test.png')
+self.ui.label_5.setPixmap(pix)
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[mbp 10.15.7 预览markdown（.md）问题]]></title>
+        <id>https://zxyfanta.github.io/post/mbp-10157-yu-lan-markdownmdwen-ti/</id>
+        <link href="https://zxyfanta.github.io/post/mbp-10157-yu-lan-markdownmdwen-ti/">
+        </link>
+        <updated>2022-07-31T00:34:07.000Z</updated>
+        <summary type="html"><![CDATA[<h2 id="markkdown">markkdown</h2>
+<p>日常工作重点用到markdown的情况是越来越多，电脑里面也有多款markdown编辑器。<br>
+比如常见的Obsidian，zettlr，Mweb等（不包含因为各种情况卸载的编辑器）。<br>
+比较舒服的是Mweb（个人吐槽不支持vim），不过作为主要用于博客更新的工具来说，也没什么必要。<br>
+Obsidian用的时间比较长了，虽然插件众多，但是目前主要用于与zotero进行的笔记联动。</p>
+]]></summary>
+        <content type="html"><![CDATA[<h2 id="markkdown">markkdown</h2>
+<p>日常工作重点用到markdown的情况是越来越多，电脑里面也有多款markdown编辑器。<br>
+比如常见的Obsidian，zettlr，Mweb等（不包含因为各种情况卸载的编辑器）。<br>
+比较舒服的是Mweb（个人吐槽不支持vim），不过作为主要用于博客更新的工具来说，也没什么必要。<br>
+Obsidian用的时间比较长了，虽然插件众多，但是目前主要用于与zotero进行的笔记联动。</p>
+<!-- more -->
+<h2 id="mac-quicklook">mac quicklook</h2>
+<p>quicklook作为一个mac的超现实主义工具，是工作中用于预览文件的工具。通过它可以避免打开文件的过程。（尤其是在需要检阅大量文件的时候：检查毕业论文稿件）。<br>
+通常来说，mac自带的文件预览包含了一些常用文件的预览。mac作为程序员的···生产力工具···，也应该支持更多的代码文件（js，css，html，java，py，ipynb，c，cpp）等格式的支持，当然也还有各类配置文件格式和今天的主题md/markdown等后缀。</p>
+<h2 id="工具">工具</h2>
+<ul>
+<li>QLMarkdown<br>
+常用的工具包括quicklook的插件式扩展，QLMarkdown插件：</li>
+</ul>
+<pre><code>brew install QLMarkdown
+</code></pre>
+<p>当然这个插件的下载速度比较慢。因为数据来源github。你懂的。</p>
+<ul>
+<li>glance插件</li>
+</ul>
+<p><img src="https://zxyfanta.github.io/post-images/1660005430436.png" alt="" loading="lazy"><br>
+这个插件目前已经不更新了。最近一次更新是在2020年。不过目前可以正常使用。<br>
+下载地址在github中可以找到。</p>
+<pre><code>https://github.com/samuelmeuli/glance
+</code></pre>
+<p>安装后，可以开启各种格式的支持，比较适合程序员使用。</p>
+<ul>
+<li>IQuickLook</li>
+</ul>
+<p>这个插件简单的尝试过，在github中是中文说明。不过也是在2020附近停止了更新。<br>
+这个插件打开markdown后是有渲染的。因此效果不错。<br>
+地址，可自行github搜索。</p>
+<h2 id="出现的问题">出现的问题</h2>
+<p>本机系统是10.15.7，没有进行大版本更新，主要需要稳定的环境。<br>
+在安装一系列插件之前，有安装坚果云。<br>
+很长一段时间，其他的格式都可以正常预览，但是markdown却不能预览。<br>
+准确的说，是“md”格式没有响应，“mardown”后缀是可以的。<br>
+因此基于强迫症，进行了旷日持久的折腾。<br>
+无意间在搜索中确实见过坚果云影响md的预览，只是当时觉得是无稽之谈，没有理会。<br>
+今天在准备重装系统解决问题之前，决定尝试一下。<br>
+确实马上就解决了。<br>
+重装<code>坚果云</code>是最终的解决方案。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[python 自动化工具（1）]]></title>
+        <id>https://zxyfanta.github.io/post/python-zi-dong-hua-gong-ju-1/</id>
+        <link href="https://zxyfanta.github.io/post/python-zi-dong-hua-gong-ju-1/">
+        </link>
+        <updated>2022-07-29T00:32:25.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="自动化工具">自动化工具</h2>
+<figure data-type="image" tabindex="1"><img src="https://zxyfanta.github.io/post-images/1660005196988.jpeg" alt="" loading="lazy"></figure>
+<p>最近接到一个任务，在三个不同的网站进行信息处理（分别命名为A、B、C）。A平台是主要的工作平台，其中的两项业务需要在B和C两个平台中进行验证。</p>
+<h2 id="基本需求">基本需求</h2>
+<h3 id="登陆认证">登陆认证</h3>
+<p>A、B两个平台需要进行登陆认证，因此需要涉足python的自动化网页登陆（登陆状态保存）。</p>
+<h3 id="数据库操作">数据库操作</h3>
+<p>C平台由于太过老旧，后导出数据库，保存为sqlite直接内置使用。<br>
+当然也免不了将导出的excel转化到info.db咯。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[时间是金贵的]]></title>
+        <id>https://zxyfanta.github.io/post/shi-jian-shi-jin-gui-de/</id>
+        <link href="https://zxyfanta.github.io/post/shi-jian-shi-jin-gui-de/">
+        </link>
+        <updated>2022-07-27T00:30:56.000Z</updated>
+        <summary type="html"><![CDATA[<h2 id="两班倒的假期">两班倒的假期</h2>
+<p>几乎所有的人都羡慕，教师每年都有两个雷打不动的假期。不论是谁，谈及此事；总是抚掌称赞。自18年开始，于大家眼中，我就正式开始有“假期”了。<br>
+其实实则我一个假期也没有正式玩过。</p>
+]]></summary>
+        <content type="html"><![CDATA[<h2 id="两班倒的假期">两班倒的假期</h2>
+<p>几乎所有的人都羡慕，教师每年都有两个雷打不动的假期。不论是谁，谈及此事；总是抚掌称赞。自18年开始，于大家眼中，我就正式开始有“假期”了。<br>
+其实实则我一个假期也没有正式玩过。</p>
+<!-- more -->
+<h2 id="老大老二">老大&amp;老二</h2>
+<p>老大出生十几天后，我去西藏项目上了；老二出生前前后后，我一直都在。我应该算是错过了老大成长，老二这次没错过。从七月假期开始，随着二老折返山西。做饭、洗衣、照顾孩子等琐事都由我一力承担。平时没什么大不了的事情，在反复多次，多次，再多次的情况下，逐渐变得无所适从起来。</p>
+<h2 id="时间是宝贵的">时间是宝贵的</h2>
+<p>琐事缠身之后，几乎丧失了自己思考和做事的时间。人总是困难的，有太多想做的没做；有太多想干的没干。看着学校里面的小年轻们，每天在校园里面游荡，打心眼的羡慕，或者应该说嫉妒。</p>
+<p>时间是公平的，好好珍惜时间。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[新的开始]]></title>
+        <id>https://zxyfanta.github.io/post/xin-de-kai-shi/</id>
+        <link href="https://zxyfanta.github.io/post/xin-de-kai-shi/">
+        </link>
+        <updated>2022-07-26T00:23:32.000Z</updated>
+        <content type="html"><![CDATA[<p>0x01 流放与坎坷</p>
+<p>不论从哪里来，到哪里去，心总需要一个归宿。<br>
+暂且窝在这里，暂时哪里也不去。</p>
+]]></content>
+    </entry>
+</feed>
